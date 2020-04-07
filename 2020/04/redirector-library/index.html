@@ -107,6 +107,10 @@ My goal is to document and automate the deployment of various methods to redirec
 </ul>
 <p>I would like to find completely different method to add more variety.</p>
 <p>The project if available on <a href="https://github.com/upils/redirect-lib">github</a>.</p>
+<h2 id="under-the-hood">Under the hood</h2>
+<p>On every method researched, redirection is operated using either Layer 4 (TCP/IP) or Layer 7 (Application -&gt; HTTP).</p>
+<p>Methods such as <code>socat</code>, <code>ssh</code> or <code>nginx</code> (in &ldquo;stream&rdquo; mode) use Layer 4 (TCP/IP) redirection. As such, they are able to redirect HTTPS traffic without any specific configuration. The drawback is : as no decryption is done, no smart/custom filtering can be done. Every request submitted to the redirector will go straight to the C2. The only exception is the use of <code>ssl_preread</code> on the nginx method to read the SNI and know the domain requested.</p>
+<p>Methods such as <code>cloudflare-wokers</code> or <code>traefik</code> use Layer 7 redirection. They need to decrypt the HTTPS traffic and are able to apply filtering.</p>
 
       
     </div>
