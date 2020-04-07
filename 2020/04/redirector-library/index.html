@@ -8,7 +8,7 @@
 
 <meta property='og:title' content='Redirector Library - Blog - RedRobin'>
 <meta property='og:description' content='tl;dr : https://github.com/upils/redirect-lib
-We need redirectors I have started a project about redirectors. redirectors as in command and control redirectors, to redire
+We need redirectors I have started a project about redirectors. redirectors as in command and control redirectors.
 My goal is to document and automate the deployment of various methods to redirect incoming traffic from a client (a compromized host) to another server (a C&amp;C such as Cobalt Strike or Covenant). The main purpose of this kind of tool is to hide the main server address and thus gain flexibility.'>
 <meta property='og:url' content='http://blog.redrobin.company/2020/04/redirector-library/'>
 <meta property='og:site_name' content='Blog - RedRobin'>
@@ -87,19 +87,19 @@ My goal is to document and automate the deployment of various methods to redirec
     <div class="content">
       <p>tl;dr : <a href="https://github.com/upils/redirect-lib">https://github.com/upils/redirect-lib</a></p>
 <h2 id="we-need-redirectors">We need redirectors</h2>
-<p>I have started a project about <code>redirectors</code>. <code>redirectors</code> as in <code>command and control redirectors</code>, to redire</p>
+<p>I have started a project about <code>redirectors</code>. <code>redirectors</code> as in <code>command and control redirectors</code>.</p>
 <p>My goal is to document and automate the deployment of various methods to redirect incoming traffic from a client (a compromized host) to another server (a C&amp;C such as Cobalt Strike or Covenant). <strong>The main purpose of this kind of tool is to hide the main server address and thus gain flexibility</strong>.</p>
 <p>If the payload is detected and the domain/IP address of the redirector if blocked, being able to setup another &ldquo;entrypoint&rdquo; is a key element in a redteam infrastructure.</p>
 <h2 id="largent-cest-le-nerf-de-la-guerre">&ldquo;L&rsquo;argent c&rsquo;est le nerf de la guerre&rdquo;</h2>
 <p>Automating deployment/infrastructure tasks has multiple advantages like : limit OPSEC fails, increase reactivity and reduce costs. We are able to deploy and adapt faster, thus cheaper. So, <strong>another goal of this project is to find cheapest solution</strong> while ensuring the same &ldquo;service level&rdquo;.</p>
-<p>That is why I have, for now, excluded using <a href="https://aws.amazon.com/ec2/spot/">AWS spot instances</a>. Using these instances could further reduce the cost of some methods (basically every method needing a full cloud instance) but there is no warranty one instance will keep running full time during an engagement. Furthermore, as this solution are based on a &ldquo;pool&rdquo; of resources, I would need to manage on the fly DNS entry or add other components (AWS ELB ?) to the cloud stack to keep my redirection running.</p>
+<p>That is why I have, for now, excluded using <a href="https://aws.amazon.com/ec2/spot/">AWS spot instances</a>. Using these instances could further reduce the cost of some methods (basically every method needing a full cloud instance) but there is no warranty one instance will keep running full time during an engagement. Furthermore, as this solution are based on a &ldquo;pool&rdquo; of resources, I would need to manage on the fly DNS entry or add other components (AWS ELB ?) to the cloud stack to keep the redirection running.</p>
 <h2 id="a-word-on-categories">A word on categories</h2>
 <p>I have sorted methods in two main categories : <code>smart</code> and <code>dumb</code> methods.</p>
 <ul>
 <li><code>smart</code> ones have features enabling the operator (you) to customize the redirection behavior. You may change redirection rules based on User Agent, source IP, URI requested, result of a fingerprinting script, etc.</li>
-<li><code>dumb</code> well&hellip; not <code>smart</code>, so the method only redirect, that&rsquo;s it.</li>
+<li><code>dumb</code> well, not <code>smart</code>. so the method only redirect, that&rsquo;s it.</li>
 </ul>
-<p>Then, in the <code>smart</code>categories, I have mainly researched 3 kind of methods:</p>
+<p>Then, in the <code>smart</code> category, I have mainly researched 3 kind of methods:</p>
 <ul>
 <li>web proxies (apache, nginx, etc.)</li>
 <li>CDN (cloudflare, Azure CDN, etc.)</li>

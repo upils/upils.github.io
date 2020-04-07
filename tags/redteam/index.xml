@@ -18,7 +18,7 @@
       
       <guid>http://blog.redrobin.company/2020/04/redirector-library/</guid>
       <description>tl;dr : https://github.com/upils/redirect-lib
-We need redirectors I have started a project about redirectors. redirectors as in command and control redirectors, to redire
+We need redirectors I have started a project about redirectors. redirectors as in command and control redirectors.
 My goal is to document and automate the deployment of various methods to redirect incoming traffic from a client (a compromized host) to another server (a C&amp;amp;C such as Cobalt Strike or Covenant). The main purpose of this kind of tool is to hide the main server address and thus gain flexibility.</description>
     </item>
     
