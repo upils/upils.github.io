@@ -6,10 +6,18 @@
     <description>Recent content in Posts on Blog - RedRobin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 06 Apr 2020 20:29:07 +0200</lastBuildDate>
-    
-	<atom:link href="http://blog.redrobin.company/posts/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Thu, 12 Oct 2023 23:35:07 +0200</lastBuildDate><atom:link href="http://blog.redrobin.company/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debug a debugger while debugging</title>
+      <link>http://blog.redrobin.company/2023/10/debug-a-debugger-while-debugging/</link>
+      <pubDate>Thu, 12 Oct 2023 23:35:07 +0200</pubDate>
+      
+      <guid>http://blog.redrobin.company/2023/10/debug-a-debugger-while-debugging/</guid>
+      <description>Failing to build from source Recently I worked with schopin to solve a bug in the delve Debian package failing to build from source in the newly released Mantic Minotaur Ubuntu (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1052030).
+This bug appeared following a rebuild of the package, without any change to the package. The build failed because tests were failing.
+The error message was not very useful:
+=== RUN TestRecursiveStructure support.go:246: enabling recording for TestRecursiveStructure proc_test.go:1215: proc_test.</description>
+    </item>
     
     <item>
       <title>Redirector Library</title>

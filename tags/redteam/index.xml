@@ -6,11 +6,7 @@
     <description>Recent content in redteam on Blog - RedRobin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 06 Apr 2020 20:29:07 +0200</lastBuildDate>
-    
-	<atom:link href="http://blog.redrobin.company/tags/redteam/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 06 Apr 2020 20:29:07 +0200</lastBuildDate><atom:link href="http://blog.redrobin.company/tags/redteam/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Redirector Library</title>
       <link>http://blog.redrobin.company/2020/04/redirector-library/</link>
