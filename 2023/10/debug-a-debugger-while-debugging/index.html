@@ -100,7 +100,7 @@ The error message was not very useful:
 cd delve-1.21.0
 sbuild --no-clean
 </code></pre></div><h2 id="debug">Debug</h2>
-<p>After confirming a bunch of tests were failing the same way, I picked <code>TestRecursiveStructure</code> randomly and decided to debug it. To so so, I used&hellip; delve.</p>
+<p>After confirming a bunch of tests were failing the same way, I picked <code>TestRecursiveStructure</code> randomly and decided to debug it. To do so, I used&hellip; delve.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">schroot -c mantic-amd64 -u root
 apt install golang
 go install github.com/go-delve/delve/cmd/dlv@latest
@@ -110,7 +110,7 @@ cd delve-1.21.0/pkg/proc <span style="color:#f92672">&amp;&amp;</span> go test -
 </code></pre></div><p>I learned several interesting things here:</p>
 <ul>
 <li>you can use <code>go test</code> with the <code>-c</code> option to compile tests in a specific package and get the resulting test binary</li>
-<li>you can give <code>-gcflags='-N -l'</code> flags to avoid any optimizations. At first I did not know this, and while debugging the debugger jump to weird location or missed skipped some sections (due to optimizations and inlining).</li>
+<li>you can give <code>-gcflags='-N -l'</code> flags to avoid any optimizations. At first I did not know this, and while debugging the debugger jump to weird location or missed/skipped some sections (due to optimizations and inlining).</li>
 <li>you can give parameters to <code>dlv</code> that should be given to the debugged binary. This way I could specifically target the test I wanted (even though I later added a breakpoint on this test).</li>
 </ul>
 <p>Note: To compare with a previously working situation I did the same in my jammy-based host machine. I reproduce each <code>dlv</code> command in both environments to compare results.</p>
@@ -185,10 +185,10 @@ main.main<span style="color:#f92672">()</span>
 </code></pre></div><p>Here it was. The tests were fine, but the tested binary was broken. Here is the relevant code.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">loc</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">LoadLocation</span>(<span style="color:#e6db74">&#34;Mexico/BajaSur&#34;</span>)
 <span style="color:#a6e22e">tim2</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">ParseInLocation</span>(<span style="color:#e6db74">&#34;2006-01-02 15:04:05&#34;</span>, <span style="color:#e6db74">&#34;2022-06-07 02:03:04&#34;</span>, <span style="color:#a6e22e">loc</span>)
-</code></pre></div><p>The call to <code>time.ParseInLocation()</code> panicked because <code>loc</code> was nil.</p>
+</code></pre></div><p>The call to <code>time.ParseInLocation()</code> panicked because <code>loc</code> was <code>nil</code>.</p>
 <p>This can traced back to some changes in <code>tzdata</code> not providing some &ldquo;uncommon&rdquo; time zones. They are now available in <code>tzdata-legacy</code>.</p>
 <h2 id="the-one-line-fix">The one-line fix</h2>
-<p>To fix, I simply replaced the timezone with <code>America/Mazatlan</code> (see <a href="https://github.com/go-delve/delve/pull/3527)">https://github.com/go-delve/delve/pull/3527)</a>.</p>
+<p>To fix, I simply replaced the timezone with <code>America/Mazatlan</code>. See <a href="https://github.com/go-delve/delve/pull/3527">this PR</a>.</p>
 
       
     </div>
